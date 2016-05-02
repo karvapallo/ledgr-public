@@ -1,0 +1,7 @@
+.idea
+backend/node_modules
+frontend/node_modules
+frontend/www/lib
+couchdb-vagrant/.vagrant
+frontend/www/css/ionic.app.*
+.DS_Store

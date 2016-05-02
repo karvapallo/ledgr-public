@@ -1,0 +1,67 @@
+<ion-view view-title="{{title}}">
+	<ion-content>
+		<form name="newLedgerForm" novalidate="novalidate">
+			<ion-list>
+				<label class="item item-input">
+					<input type="text" ng-required="true" ng-model="newLedger.purchase" placeholder="What Was Bought?">
+				</label>
+				<ion-item class="item-divider">
+					Who Bought?
+				</ion-item>
+				<ion-item ng-click="addNewCreditor()">
+					+ Add & Remove Users
+				</ion-item>
+			</ion-list>
+			<div class="card creditors" ng-repeat="creditor in newLedger.creditors">
+				<div class="item item-divider">
+					{{creditor.name}}
+				</div>
+				<label class="item item-input">
+					<input type="number" ng-required="true" ng-model="creditor.loaned" placeholder="Amount Loaned">
+				</label>
+			</div>
+			<ion-list>
+				<ion-item class="item-divider">
+					For Whom?
+				</ion-item>
+				<ion-item ng-click="addNewDebtor()">
+					+ Add & Remove Users
+				</ion-item>
+			</ion-list>
+			<div class="card debtors" ng-repeat="debtor in newLedger.debtors">
+				<div class="item item-divider">
+					{{debtor.name}}
+				</div>
+				<label class="item item-input">
+					<input type="number" ng-required="true" ng-model="debtor.owed" placeholder="Amount Owed">
+				</label>
+			</div>
+			<ion-list>
+				<ion-item>
+					<button ng-click="divideEqually()" class="button button-block button-positive">
+						Divide Equally
+					</button>
+				</ion-item>
+				<label ng-if="newLedger.debtors.length && newLedger.creditors.length" class="item item-input" ng-class="{ 'ng-invalid' : total() != 0 }">
+					Total (must equal zero): {{total() | currency:'€':2}}
+				</label>
+				<ion-item>
+					<a ng-click="takePicture()">+ Take a Picture of the Receipt</a>
+				</ion-item>
+				<ion-item ng-href="#/tab/ledgers/{{newLedger._id}}/images/{{key}}" ng-repeat="(key, image) in newLedger._attachments">
+					<div class="item-thumbnail-left">
+						<img ng-src="data:image/jpeg;base64,{{image.data}}">
+					</div>
+					<ion-option-button class="button-assertive" ng-click="deleteImage(key)">
+						Delete
+					</ion-option-button>
+				</ion-item>
+				<ion-item>
+					<button ng-click="saveNewLedger(newLedgerForm)" class="button button-block button-positive">
+						Save
+					</button>
+				</ion-item>
+			</ion-list>
+		</form>
+	</ion-content>
+</ion-view>

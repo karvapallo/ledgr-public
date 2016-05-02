@@ -1,0 +1,24 @@
+<ion-view view-title="Users">
+	<ion-content>
+		<ion-list>
+			<ion-item class="item-remove-animate" type="item-text-wrap" ng-href="#/tab/add-new-user">
+				+ Add New
+			</ion-item>
+			<ion-item class="item-remove-animate item-avatar item-icon-right"
+					  ng-class="{ 'has-payed' : value.hasPayed }"
+					  ng-repeat="(key, value) in $root.docs"
+					  ng-if="value.type == 'user'"
+					  type="item-text-wrap"
+					  href="#/tab/users/{{key}}">
+				<img attachment="value._id">
+
+				<h2>{{value.name}}</h2>
+				<i class="icon ion-chevron-right icon-accessory"></i>
+
+				<ion-option-button class="button-assertive" ng-model="showDelete" ng-click="delete(value._id, value._rev)">
+					Delete
+				</ion-option-button>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-view>

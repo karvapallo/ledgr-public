@@ -1,0 +1,18 @@
+<ion-view view-title="Totals">
+	<ion-content>
+		<ion-list>
+			<ion-item class="item-remove-animate item-avatar item-icon-right"
+					  ng-href="#/tab/totals/{{user._id}}"
+					  ng-class="{ 'has-payed' : user.hasPayed }"
+					  ng-repeat="user in users"
+					  type="item-text-wrap">
+				<img attachment="user._id">
+
+				<h2>{{user.name}}</h2>
+				<!--  ng-class="{ 'negative' : user.total < 0, 'positive' : user.total > 0 }" -->
+				<p>{{user.total | currency : '€' : 2}}</p>
+				<i class="icon ion-chevron-right icon-accessory"></i>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-view>

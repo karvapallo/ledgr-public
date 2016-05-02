@@ -1,0 +1,18 @@
+<ion-modal-view>
+	<ion-header-bar>
+		<h1 class="title">Users</h1>
+		<div class="buttons">
+			<button class="button" ng-click="modal.remove()">Close</button>
+		</div>
+	</ion-header-bar>
+	<ion-content>
+		<ion-list>
+			<ion-checkbox ng-repeat="user in potentialCreditors" ng-model="user.checked">{{user.name}}</ion-checkbox>
+			<ion-item>
+				<button ng-click="addCreditor()" class="button button-block button-positive">
+					Save
+				</button>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-modal-view>

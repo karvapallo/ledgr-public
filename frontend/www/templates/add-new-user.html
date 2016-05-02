@@ -1,0 +1,24 @@
+<ion-view view-title="{{title}}">
+	<ion-content>
+		<ion-list>
+			<label class="item item-input">
+				<input type="text" ng-require="true" name="name" ng-model="newUser.name" placeholder="Name">
+			</label>
+			<label class="item item-input">
+				<input type="email" ng-require="true" name="email" ng-model="newUser.email" placeholder="Email">
+			</label>
+			<ion-item>
+				<a ng-click="takePicture()">Take Picture</a>
+			</ion-item>
+			<ion-item ng-if="newUser._attachments.avatar.data" class="item-remove-animate item-avatar">
+				<img ng-src="data:image/jpeg;base64,{{newUser._attachments.avatar.data}}">
+			</ion-item>
+			<ion-checkbox ng-model="newUser.hasPayed">Has Payed</ion-checkbox>
+			<ion-item>
+				<button ng-click="save()" class="button button-block button-positive">
+					Save
+				</button>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-view>

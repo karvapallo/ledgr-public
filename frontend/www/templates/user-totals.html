@@ -1,0 +1,17 @@
+<ion-view view-title="User's Ledgers">
+	<ion-content>
+		<ion-list>
+			<ion-item class="item-divider" ng-repeat-start="doc in ledgers" ng-if="$index == 0 || (doc.created | date:'EEEE') != (ledgers[$index - 1].created | date:'EEEE')">
+				{{doc.created | date:'EEEE'}}
+			</ion-item>
+			<ion-item class="item-avatar" ng-repeat-end ng-href="#/tab/totals/{{$stateParams.userId}}/ledgers/{{doc._id}}">
+				<img attachment="doc._id">
+				<h2>{{doc.purchase || 'Unknown' }}</h2>
+				<p>{{doc.created | date:'HH.mm - EEEE - dd.MM.yyyy'}}</p>
+				<ion-option-button class="button-assertive" ng-click="delete(doc._id, doc._rev)">
+					Delete
+				</ion-option-button>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-view>

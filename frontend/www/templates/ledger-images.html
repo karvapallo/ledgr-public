@@ -1,0 +1,18 @@
+<ion-view class="images" view-title="">
+	<ion-slide-box active-slide="activeImage" show-pager="false">
+		<ion-slide class="full-screen-image-wrapper" ng-repeat="image in images">
+			<ion-scroll overflow-scroll="false"
+						direction="xy"
+						scrollbar-x="false"
+						scrollbar-y="false"
+						zooming="true"
+						min-zoom="{{zoomMin}}"
+						class="scroll-wrapper"
+						delegate-handle="scrollHandle{{$index}}"
+						on-scroll="updateSlideStatus(activeImage)"
+						on-release="updateSlideStatus(activeImage)">
+				<img class="full-screen-image" ng-src="data:image/jpeg;base64,{{image.data}}">
+			</ion-scroll>
+		</ion-slide>
+	</ion-slide-box>
+</ion-view>
